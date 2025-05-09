@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyWebsite</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Reset and Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
+    .container { width: 90%; max-width: 1100px; margin: auto; }
+
+    /* Header */
+    .header { background: #333; color: #fff; padding: 20px 0; position: sticky; top: 0; z-index: 1000; }
+    .header .logo { font-size: 24px; }
+    .nav ul { list-style: none; display: flex; justify-content: flex-end; }
+    .nav ul li { margin-left: 20px; }
+    .nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
+
+    /* Hero */
+    .hero { background: url("img/pic3.jpg") no-repeat center center/cover; color: #fff; text-align: center; padding: 100px 0; }
+    .hero .btn { display: inline-block; margin-top: 20px; padding: 10px 30px; background: #ff6b6b; color: #fff; text-decoration: none; border-radius: 5px; }
+
+    /* Goals Section */
+    #Goals { padding: 100px 0; background: #f9f9f9; text-align: center; }
+    #Goals .section-title { font-size: 4rem; font-weight: 700; color: #330033; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.2rem; }
+    #Goals .section-title span { color: crimson; }
+    #Goals .goals-top p { font-size: 1.6rem; margin-top: 10px; line-height: 2.8rem; font-weight: 400; max-width: 800px; margin: 10px auto; }
+    #Goals .goals-bottom { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px; }
+    #Goals .goals-item {
+      flex: 1 1 300px;
+      background-image: url("img/pic4.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #Goals .goals-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(47, 2, 68, 0.5);
+      z-index: 0;
+      border-radius: 10px;
+    }
+    #Goals .goals-item h3, #Goals .goals-item p { position: relative; z-index: 1; }
+    #Goals .goals-item h3 { font-size: 2rem; margin-bottom: 15px; text-transform: uppercase; }
+    #Goals .goals-item p { font-size: 1.4rem; line-height: 2rem; }
+    #Goals .goals-item:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+
+    /* Contact Section */
+    #contact { padding: 100px 20px; background: linear-gradient(135deg, #f9f9f9 0%, #e6e6ff 100%); }
+    #contact .contact { max-width: 1200px; margin: 0 auto; text-align: center; }
+    #contact .contact-info h1 { font-size: 3.5rem; font-weight: 700; color: #330033; margin-bottom: 10px; }
+    #contact .contact-info h2 { font-size: 1.6rem; font-weight: 400; color: #555; margin: 10px auto 50px; max-width: 700px; }
+    #contact .contact-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 50px; }
+    #contact .contact-item {
+      flex: 1 1 300px;
+      background: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #contact .contact-item:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); }
+    #contact .contact-item h3 { font-size: 1.8rem; margin-bottom: 10px; color: #330033; }
+    #contact .contact-item p { font-size: 1.4rem; color: #666; }
+
+    /* Portfolio Section */
+    .portfolio-section { padding: 100px 20px; text-align: center; background: linear-gradient(135deg, #f9f9f9 0%, #e6e6ff 100%); }
+    .section-title { font-size: 3.5rem; margin-bottom: 10px; color: #330033; text-transform: uppercase; letter-spacing: 0.1rem; }
+    .section-title span { color: crimson; }
+    .section-subtitle { font-size: 1.6rem; color: #555; margin: 0 auto 50px; max-width: 700px; }
+    .portfolio-items { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+    .portfolio-item {
+      flex: 1 1 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 350px;
+    }
+    .portfolio-item:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); }
+    .portfolio-item img { width: 100%; border-radius: 10px; margin-bottom: 15px; object-fit: cover; }
+    .portfolio-item h3 { font-size: 1.8rem; margin-bottom: 10px; color: #330033; text-transform: uppercase; }
+    .portfolio-item p { font-size: 1.4rem; color: #666; }
+
+    /* Footer */
+    .footer { background: #333; color: #fff; padding: 20px 0; margin-top: 20px; text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav ul { flex-direction: column; align-items: center; }
+      #Goals .section-title, #contact .contact-info h1, .section-title { font-size: 2.8rem; }
+      #Goals .goals-top p, #contact .contact-info h2, .section-subtitle { font-size: 1.4rem; }
+      #Goals .goals-item, .portfolio-items, #contact .contact-items { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">ArtStation</h1>
+      <nav class="nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#Goals">Goals</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>Welcome to EmmaArtts</h2>
+      <p style="color: crimson;">For the honoured ones</p>
+      <a href="#portfolio" class="btn">Portfolio</a>
+    </div>
+  </section>
+
+  <!-- Goals Section -->
+  <section id="Goals" class="goals-section">
+    <div class="container">
+      <h2 class="section-title">Our <span>Goals</span></h2>
+      <div class="goals-top">
+        <p>We will strive in the animation industry.</p>
+      </div>
+      <div class="goals-bottom">
+        <div class="goals-item">
+          <h3>Goals</h3>
+          <p>We want to make high employment rate for animators.</p>
+        </div>
+        <div class="goals-item">
+          <h3>Goals</h3>
+          <p>Teaching young aspiring artists.</p>
+        </div>
+        <div class="goals-item">
+          <h3>Goals</h3>
+          <p>Making animations easier.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact">
+      <div class="contact-info">
+        <h1>Get in Touch</h1>
+        <h2>We'd love to hear from you. Reach out via email, call, or send us a message!</h2>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <h3>Email</h3>
+          <p>obukoniseefe8@gmail.com</p>
+        </div>
+        <div class="contact-item">
+          <h3>Phone</h3>
+          <p>+234 90611504</p>
+        </div>
+        <div class="contact-item">
+          <h3>Address</h3>
+          <p>Thomas Adewunmi University</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio-section">
+    <h1 class="section-title">My <span>Portfolio</span></h1>
+    <p class="section-subtitle">My digital Art :)</p>
+    <div class="portfolio-items">
+      <div class="portfolio-item">
+        <img src="portfolio/emma.jpg" alt="Emma Art">
+        <h3>Project 1</h3>
+        <p>MY OC, Alright... let's begin.</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="portfolio/jinx.jpg" alt="Jinx Arcane Art">
+        <h3>Project 2</h3>
+        <p>JINX FROM ARCANE. Break the cycle.</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="portfolio/lines.jpg" alt="Lines Drawing">
+        <h3>Project 3</h3>
+        <p>MY OC. I alone am the honoured one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>2025 ArtStation EmmaArt copyright</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+
